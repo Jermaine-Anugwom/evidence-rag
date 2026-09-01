@@ -11,7 +11,7 @@ A fluent answer is unsafe when users cannot inspect its support or contradiction
 
 ## The proof
 
-Deterministic retrieval, sentence citations, contradiction flags, abstention, and retrieval metrics.
+Deterministic token-overlap retrieval, source citations, required/not-required contradiction checks, and abstention when evidence is missing or conflicting.
 
 ## Why this is forward deployed
 
@@ -38,7 +38,7 @@ flowchart LR
 ```bash
 python3.12 -m venv .venv
 source .venv/bin/activate
-python -m pip install -e '.[dev]'
+python -m pip install -c constraints.txt -e '.[dev]'
 pytest -q
 evidence_rag
 ```

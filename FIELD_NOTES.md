@@ -21,7 +21,7 @@ A fluent answer is unsafe when users cannot inspect its support or contradiction
 
 ## Success measure
 
-Deterministic retrieval, sentence citations, contradiction flags, abstention, and retrieval metrics.
+Deterministic token-overlap retrieval, inspectable source IDs, required/not-required contradiction checks, and abstention when support is missing or conflicting.
 
 ## Handoff
 

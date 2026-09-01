@@ -46,7 +46,22 @@ def test_detects_contradiction():
         Passage("A", "Badge training is required."),
         Passage("B", "Badge training is not required."),
     ]
-    assert answer("badge training required", docs, 1).contradictions == ("A", "B")
+    result = answer("badge training required", docs, 1)
+    assert result.contradictions == ("A", "B") and result.abstained
+
+
+def test_single_negative_source_does_not_contradict_itself():
+    docs = [Passage("A", "Badge training is not required.")]
+    assert answer("badge training required", docs, 1).contradictions == ()
+
+
+def test_detects_semantic_does_not_require_conflict():
+    docs = [
+        Passage("A", "The policy requires badge training."),
+        Passage("B", "The policy does not require badge training."),
+    ]
+    result = answer("policy require badge training", docs, 1)
+    assert result.contradictions == ("A", "B") and result.abstained
 
 
 def test_deterministic():
